@@ -1,41 +1,65 @@
-{% extends "layout.html.twig" %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blue sports</title>
 
-{% block content %}
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js" ></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="jumbotron" style="margin-top: 50px;">
-                    <h2 class="text-center">Jesus Arriaga Barron - Row Application</h2>
-                </div>
-            </div>
-            <div class="col-md-8 col-md-offset-2">
-                <h4 class="text-center">Sort Application</h4>
-                <ul id="sortable" class="list-group" data-bind="foreach: tasks, visible: tasks().length > 0">
-                    <li class="list-group-item"  data-bind="attr:{id:id}, event:{mouseover: $parent.activeEdition,mouseout: $parent.deactivateEdition}">
-                       <div class="col-md-8 col-sm-8 col-xs-8">
-                           <input type="hidden" data-bind="value: id" />
-                           <span class="description" data-bind="text:description, visible: showDescription"></span>
-                           <input  class="form-control" type="text" data-bind="value: description,visible: enableEdition"  />
-                       </div>
-                        <div class="col-md-1 col-md-offset-2 col-sm-2 col-xs-2"> <span class="pull-right"><i class="fa fa-lg fa-arrows-v"></i></span></div>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
-                        <div class="col-md-1 col-sm-2 col-xs-2"> <span class="pull-right"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></span></div>
-                        <div class="clearfix"></div>
+    <script src="https://use.fontawesome.com/95088d75b6.js"></script>
+    <script src="{{ asset('js/app.js') }}" defer="defer"></script>
 
-                    </li>
+</head>
+<body>
 
-                </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron" style="margin-top: 50px;">
+                <h2 class="text-center">Jesus Arriaga Barron - Row Application</h2>
             </div>
         </div>
+        <div class="col-md-8 col-md-offset-2">
+            <h4 class="text-center">Sort Application</h4>
+            <ul id="sortable" class="list-group" data-bind="foreach: tasks, visible: tasks().length > 0">
+                <li class="list-group-item"  data-bind="attr:{id:id}, event:{mouseover: $parent.activeEdition,mouseout: $parent.deactivateEdition}">
+                    <div class="col-md-8 col-sm-8 col-xs-8">
+                        <input type="hidden" data-bind="value: id" />
+                        <span class="description" data-bind="text:description, visible: showDescription"></span>
+                        <input  class="form-control" type="text" data-bind="value: description,visible: enableEdition"  />
+                    </div>
+                    <div class="col-md-1 col-md-offset-2 col-sm-2 col-xs-2"> <span class="pull-right"><i class="fa fa-lg fa-arrows-v"></i></span></div>
+
+                    <div class="col-md-1 col-sm-2 col-xs-2"> <span class="pull-right"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></span></div>
+                    <div class="clearfix"></div>
+
+                </li>
+
+            </ul>
+        </div>
     </div>
+</div>
 
-    <style>
-        .description{margin-left: 12px;    line-height: 34px;}
-        .fa{
-            cursor: pointer;}
-        .fa-trash-o{color:#ff0000;}
-    </style>
+<style>
+    .description{margin-left: 12px;    line-height: 34px;}
+    .fa{
+        cursor: pointer;}
+    .fa-trash-o{color:#ff0000;}
+</style>
 
-{% endblock %}
+</body>
+
+</html>
+
+
