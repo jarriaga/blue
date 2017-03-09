@@ -23,7 +23,7 @@ $app->get('/api/tasks',function() use($app){
     //get all records from model
     $tasks = $em->getRepository('\models\Todo')->findAll();
     //return response
-    return $app->json(["tasks"=>$tasks],200);
+    return $app->json($tasks,200);
 });
 
 

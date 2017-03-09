@@ -1,5 +1,35 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    Welcome to your new Silex Application!
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron" style="margin-top: 50px;">
+                    <h2 class="text-center">Jesus Arriaga Barron - Row Application</h2>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <h4 class="text-center">Sort Application</h4>
+                <ul id="sortable" class="list-group" data-bind="foreach: tasks, visible: tasks().length > 0">
+                    <li class="list-group-item"  data-bind="attr:{id:id}, event:{mouseover: $parent.activeEdition,mouseout: $parent.deactivateEdition}">
+                       <div class="col-md-8 col-sm-8 col-xs-8">
+                           <input type="hidden" data-bind="value: id" />
+                           <span class="description" data-bind="text:description, visible: showDescription"></span>
+                           <input  class="form-control" type="text" data-bind="value: description,visible: enableEdition"  />
+                       </div>
+                        <div class="clearfix"></div>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .description{margin-left: 12px;    line-height: 34px;}
+    </style>
+
 {% endblock %}
