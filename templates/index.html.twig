@@ -18,7 +18,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
     <script src="https://use.fontawesome.com/95088d75b6.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer="defer"></script>
+    <script src="js/app.js" defer="defer"></script>
 
 </head>
 <body>
@@ -28,32 +28,37 @@
         <div class="col-md-12">
             <div class="jumbotron" style="margin-top: 50px;">
                 <h2 class="text-center">Jesus Arriaga Barron - Row Application</h2>
+                <p class="text-center">jarriagabarron@gmail.com</p>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
             <h4 class="text-center">Sort Application</h4>
             <ul id="sortable" class="list-group" data-bind="foreach: tasks, visible: tasks().length > 0">
                 <li class="list-group-item"  data-bind="attr:{id:id}, event:{mouseover: $parent.activeEdition,mouseout: $parent.deactivateEdition}">
-                    <div class="col-md-8 col-sm-8 col-xs-8">
+                    <div class="col-md-10 col-sm-8 col-xs-8">
                         <input type="hidden" data-bind="value: id" />
-                        <span class="description" data-bind="text:description, visible: showDescription"></span>
-                        <input  class="form-control" type="text" data-bind="value: description,visible: enableEdition"  />
+                        <span class="description" data-bind="text:description, visible: !enableEdition() "></span>
+                        <input  class="form-control" type="text" data-bind="value: description,visible: enableEdition, event:{focusout: $parent.updateTasks }"  />
                     </div>
-                    <div class="col-md-1 col-md-offset-2 col-sm-2 col-xs-2"> <span class="pull-right"><i class="fa fa-lg fa-arrows-v"></i></span></div>
-
-                    <div class="col-md-1 col-sm-2 col-xs-2"> <span class="pull-right"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></span></div>
+                    <div class="col-md-1 col-sm-2 col-xs-2" data-bind="visible:enableEdition"> <span class="pull-right"><i class="fa fa-trash-o fa-lg" aria-hidden="true" data-bind="{ click: $parent.deleteTask}"></i></span></div>
+                    <div class="col-md-1 col-sm-2 col-xs-2" data-bind="visible:enableEdition"> <span class="pull-right"><i class="fa fa-lg fa-arrows-v"></i></span></div>
                     <div class="clearfix"></div>
-
                 </li>
 
             </ul>
+            <div class="row">
+                <div class="col-md-3 col-md-offset-9">
+                    <button type="button" class="btn btn-success btn-lg" data-bind="{click: postTask}"><i class="fa fa-plus"></i> Add row</button>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
 
 <style>
     .description{margin-left: 12px;    line-height: 34px;}
-    .fa{
+    .fa{margin-top: 10px;
         cursor: pointer;}
     .fa-trash-o{color:#ff0000;}
 </style>
